@@ -15,43 +15,44 @@ public class Ornek_Arrays5 {
      Çıkış   : q
      */
 
-        int bakiye = 1000, islem;
-        int miktar;
+        int bakiye = 1000;
+
         Scanner scanner = new Scanner(System.in);
+        System.out.println("*********MENÜ***********");
+        String islemler = "1.bakiye öğrenme\n" +
+                "2.para çekme\n" +
+                "3.para yatırma\n" +
+                "4.çıkış için q'ya basınız\n";
+        System.out.println(islemler);
+        System.out.println("*************************");
 
-        System.out.println("hoşgeldiniz");
-        System.out.println("güncel bakiyeniz:" + bakiye + " TL");
-
-
-        while (bakiye > 0) {
-            System.out.println();
-            System.out.println("1.bakiye öğrenme");
-            System.out.println("2.para çekme");
-            System.out.println("3.para yatırma");
-            System.out.println("4.çıkış");
-            System.out.println("yapmak istediğiniz işlemi seçiniz:");
-            islem = scanner.nextInt();
-            miktar=scanner.nextInt();
-
-            if(islem==1){
-                System.out.println("güncel bakiyeniz= "+bakiye+" TL");
-            }else if(islem==2){
-                System.out.println("çekilen para miktarı");
-                miktar=scanner.nextInt();
-                if(bakiye<miktar){
-                    System.out.println("bakiyeniz yetersiz");
-                }else {
-                    bakiye-=miktar;
-                }
-                }else if(islem==3){
-                System.out.println("yatırmak istediğiniz miktar");
-                miktar=scanner.nextInt();
-                bakiye+=miktar;
-            }else if (islem==4){
-                System.out.println("çıkış");
+        while (true) {
+            System.out.println("işlemi seçiniz:");
+            String islem = scanner.nextLine();
+            if(islem.equals("q")){
+                System.out.println("sistemden çıkılıyor");
                 break;
-            }else {
-                System.out.println("tanımlanmayan bir işlem girdiniz");
+            }else if(islem.equals("1")){
+                System.out.println("güncel bakiye ="+ bakiye);
+            }else if(islem.equals("2")){
+                System.out.println("çekmek istediğiniz tutar="+bakiye);
+                int miktar=scanner.nextInt();
+                scanner.nextLine();
+                if(bakiye<miktar){
+                    System.out.println("bakiye yetersiz =" +bakiye);
+                }else {
+                    bakiye-= miktar;
+                    System.out.println("güncel bakiye:");
+                }
+            }else if(islem.equals("3")){
+                System.out.println("yatırmak istediğiniz tutar");
+                int tutar = scanner.nextInt();
+                scanner.nextLine();
+                bakiye+=tutar;
+                System.out.println("güncel bakiye="+bakiye);
+            }
+            else {
+                System.out.println("geçersiz işlem");
             }
         }
     }
